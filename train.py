@@ -3,7 +3,7 @@ import tensorflow as tf
 
 
 IMAGE_SIZE = 224
-MODEL_FILENAME = 'models/art-model4'
+MODEL_FILENAME = 'art-model'
 LEARNING_RATE = 1e-4
 
 
@@ -119,23 +119,7 @@ def model_fn(features, labels, mode, params):
     return spec
 
 
-def train():
-    model = tf.estimator.Estimator(model_fn=model_fn,
-                                   params={"learning_rate": LEARNING_RATE},
-                                   model_dir=MODEL_FILENAME)
-    model.train(input_fn=train_input_fn, max_steps=1000)
-    result = model.evaluate(input_fn=val_input_fn)
-    print(result)
-    print("Classification accuracy: {0:.2%}".format(result["accuracy"]))
-
-
 def train_and_evaluate():
-
-    # def serving_input_fn():
-    #     json = {'image': tf.placeholder(tf.float32, [None])}
-    #     image = json['image']
-    #     features = {'image': image}
-    #     return tf.estimator.export.ServingInputReceiver(features, json)
 
     run_config = tf.estimator.RunConfig(
         model_dir=MODEL_FILENAME,
@@ -150,7 +134,6 @@ def train_and_evaluate():
     train_spec = tf.estimator.TrainSpec(
         input_fn=train_input_fn, max_steps=2000
     )
-    # exporter = tf.estimator.LatestExporter('cats_vs_dogs', serving_input_fn)
 
     eval_spec = tf.estimator.EvalSpec(
         input_fn=val_input_fn, steps=100, throttle_secs=300
