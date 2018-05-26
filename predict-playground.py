@@ -8,7 +8,7 @@ from create_dataset import _bytes_feature
 from random import shuffle
 from generate_csv import labels, dataset_folder
 
-model = tf.estimator.Estimator(model_dir='models/art-model3_86',
+model = tf.estimator.Estimator(model_dir='art-model',
                                model_fn=model_fn, params={"learning_rate": LEARNING_RATE})
 
 
