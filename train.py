@@ -41,7 +41,7 @@ def val_input_fn():
 
 
 def model_fn(features, labels, mode, params):
-    num_classes = 5
+    num_classes = 7
     image = features["image"]
 
     # this architecture:   http://image-net.org/challenges/LSVRC/2012/supervision.pdf
