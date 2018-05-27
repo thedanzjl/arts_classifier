@@ -1,5 +1,5 @@
 # arts_classifier
- classifier oImagef different styles of arts: drawings, painting, sculpture, engraving, old Russian art
+ Image classifier of different styles of arts: drawings, painting, sculpture, engraving, old Russian art
  
  Max accuracy: 86%
 
